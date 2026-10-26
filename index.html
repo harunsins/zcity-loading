@@ -1,45 +1,43 @@
 
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z-City</title>
-
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #000;
-        }
-
-        video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+<meta charset="UTF-8">
+<style>
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+}
+video {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
 </head>
 <body>
 
-    <video id="intro" autoplay loop playsinline>
-        <source src="giris.webm" type="video/webm">
-    </video>
+<video id="video" autoplay loop playsinline>
+    <source src="giris.webm" type="video/webm">
+</video>
 
-    <script>
-        const video = document.getElementById("intro");
-        video.volume = 1;
+<script>
+const video = document.getElementById("video");
 
-        video.play().catch(() => {
-            // Tarayıcı sesli otomatik oynatmayı engelleyebilir.
-        });
-    </script>
+video.play().catch(() => {
+    video.muted = true;
+    video.play().catch(console.error);
+});
+
+document.addEventListener("click", () => {
+    video.muted = false;
+    video.play().catch(console.error);
+});
+</script>
 
 </body>
 </html>
